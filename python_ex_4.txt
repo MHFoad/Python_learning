@@ -1,0 +1,79 @@
+#4.1
+def everything_reversed (a_list):
+    new_list=[]
+    a_n_list= a_list[::-1]
+    for i in range (0,len(a_n_list)):
+        new_list.append(a_n_list[i][::-1])
+        i+=1
+    return new_list
+if __name__ == "__main__":
+    my_list = ["Hi", "there", "example", "one more"]
+    new_list = everything_reversed(my_list)
+    print(new_list)
+####################
+#4.2
+def most_common_character (my_string):
+    count=0
+    common_string=" "
+    for i in range (0,len(my_string)):
+        max_count=my_string.count(my_string[i])
+    #print (max_count)
+        if max_count>count and common_string!=my_string[i]:
+            common_string= my_string[i]
+            count=max_count
+        i+=1
+    return common_string    
+if __name__ == "__main__":    
+    first_string = "How much wood would a woodchuck chuck if a woodchuck could chuck wood wood"
+    print(most_common_character(first_string))
+
+    second_string = "exemplaryelementary"
+    print(most_common_character(second_string))
+########################################################
+#4.3
+def no_vowels (my_string):
+    new_string=""
+    for i in range (0, len(my_string)):
+        if my_string[i]!="a" and my_string[i]!="e" and my_string[i]!="i" and my_string[i]!="0" and my_string[i]!="u":
+            a_new_string= new_string+my_string[i]
+            new_string=a_new_string
+        i+=1
+    return a_new_string
+
+if __name__ == "__main__":
+    my_string = "this is an example"
+    print(no_vowels(my_string))
+#######################################################
+
+#4.4
+def no_shouting (my_list):
+    new_list=[]
+    for i in range (0,len(my_list)):
+        if my_list[i].isupper() == False:
+            new_list.append(my_list[i])
+        i+=1
+    return new_list
+    
+if __name__ == "__main__":
+    my_list = ["ABC", "def", "UPPER", "ANOTHERUPPER", "lower", "another lower", "Capitalized"]
+    pruned_list = no_shouting(my_list)
+    print(pruned_list)
+##########################################################
+#4.5
+def longest_series_of_neighbours (given_list):
+    i= 0
+    longest_list=[]
+    for i in range (0,len(given_list)):
+        new_list= [given_list[i]]
+        while i < len(given_list) - 1 and abs(given_list[i] - given_list[i+1]) == 1:
+            new_list.append(given_list[i+1])
+            i+=1
+        if len(new_list)> len(longest_list):
+            longest_list= new_list
+        i+=1
+    return len(longest_list)
+    
+if __name__ == "__main__":
+    a = [1, 2, 3, 4, 5, 7, 6, 5, 6, 5, 4, 3, 2, 4, 1, 0]
+    print (longest_series_of_neighbours (a))
+######################################################################################
