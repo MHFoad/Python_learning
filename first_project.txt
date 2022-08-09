@@ -1,0 +1,132 @@
+### Input function
+def user_input ():
+    result= []
+    while True:
+        exam_point=input("Exam Mark:")
+        excercise_point= input("Excercise _Mark:")
+        if exam_point!= "" and excercise_point!= "":
+            output= (f'Exam points and exercises completed: {exam_point} {excercise_point}')
+            print (output)
+            result.append(output)
+        else:
+            print(f'Exam points and exercises completed:')
+            print("Statistics:")
+            break
+    return result
+
+### exam  point conversion from string to int function     
+def exam_point (result):
+    exam_number=[]
+    for exam_point in result:
+        Exam_Mark=exam_point.split(" ")[-2]
+        Exam_Mark=int(Exam_Mark)
+        if Exam_Mark>=0 and Exam_Mark<=20:
+            exam_number.append(Exam_Mark)
+        else:
+            print("check the exam_input")
+    return exam_number
+### excercise  point conversion from string to int function     
+def excercise_point (result):
+    excercise_number=[]
+    for excercise_point in result:
+        Excercise_Mark=excercise_point.split(" ")[-1]
+        Excercise_Mark=int(Excercise_Mark)
+        if Excercise_Mark>=0 and Excercise_Mark<=100:
+            Excercise_Mark= Excercise_Mark//10
+            excercise_number.append(Excercise_Mark)
+        else:
+            print("check the excercise_input")
+    return excercise_number
+### average point calculation  function    
+def average_point(exam_point,excercise_point):
+    total_point=[]
+    for i in range (0,len(exam_point)):
+        total_point.append(exam_point[i]+excercise_point[i])
+    Points_average= sum(total_point)/len(exam_point)
+    print (f'Points average: {Points_average}')
+### pass percentage function    
+def pass_percentage (exam_point,excercise_point):
+    count=0
+    for i in range (0,len(exam_point)):
+        if exam_point[i]>=10 and (exam_point[i]+excercise_point[i])>14:
+            count+=1
+        i+=1
+    Pass_percentage= (count/len(exam_point))*100
+    print (f'Pass percentage: {Pass_percentage}')
+### grade distribution function    
+def grade_distribution (exam_point,excercise_point):
+    print ("Grade distribution:")
+    symbol="*"
+    grade_5=0
+    for i in range (0,len(exam_point)):
+        
+        if exam_point[i]>=10 and (exam_point[i]+excercise_point[i])>=28 and (exam_point[i]+excercise_point[i])<=30 :
+            grade_5+=1
+        i+=1
+    if grade_5>0:
+        print(f' 5: {symbol*grade_5}')
+    else:
+        print (f' 5:')
+        
+    grade_4=0
+    for i in range (0,len(exam_point)):
+        if exam_point[i]>=10 and (exam_point[i]+excercise_point[i])>=24 and (exam_point[i]+excercise_point[i])<=27 :
+            grade_4+=1
+        i+=1
+    if grade_4>0:
+        print(f' 4: {symbol*grade_4}')
+    else:
+        print (f' 4:')
+        
+    grade_3=0
+    for i in range (0,len(exam_point)):
+        if exam_point[i]>=10 and (exam_point[i]+excercise_point[i])>=21 and (exam_point[i]+excercise_point[i])<=23 :
+            grade_3+=1
+        i+=1
+    if grade_3>0:
+        print(f' 3: {symbol*grade_3}')
+    else:
+        print (f' 3:')
+        
+    grade_2=0
+    for i in range (0,len(exam_point)):
+        if exam_point[i]>=10 and (exam_point[i]+excercise_point[i])>=18 and (exam_point[i]+excercise_point[i])<=20 :
+            grade_2+=1
+        i+=1
+    if grade_2>0:
+        print(f' 2: {symbol*grade_2}')
+    else:
+        print (f' 2:')
+    
+    grade_1=0
+    for i in range (0,len(exam_point)):
+        if exam_point[i]>=10 and (exam_point[i]+excercise_point[i])>=15 and (exam_point[i]+excercise_point[i])<=17 :
+            grade_1+=1
+        i+=1
+    if grade_1>0:
+        print(f' 1: {symbol*grade_1}')
+    else:
+        print (f' 1:')
+    
+    grade_0=0
+    for i in range (0,len(exam_point)):
+        if exam_point[i]>=10 and (exam_point[i]+excercise_point[i])>=0 and (exam_point[i]+excercise_point[i])<=14 or exam_point[i] <10 :
+            grade_0+=1
+        i+=1
+    if grade_0>0:
+        print(f' 0: {symbol*grade_0}')
+    else:
+        print (f' 0:')
+ 
+
+### main programm
+def main():
+    result=user_input ()
+    exam_number=exam_point (result)
+    excercise_number=excercise_point (result)
+    Points_average= average_point(exam_number,excercise_number)
+    Pass_percentage=pass_percentage (exam_number,excercise_number)
+    #print(Points_average)
+    #print(pass_percentage (exam_number,excercise_number))
+    Grade_distribution= grade_distribution (exam_number,excercise_number)
+main()
